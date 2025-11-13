@@ -25,7 +25,7 @@ jobs:
     - run: |
         echo "Ambiente de deployment: ${{ github.event.inputs.envronment }}"
         echo "imageTag: ${{ github.event.inputs.imageTag }}"
-        
+
     - name: Deploy service
       uses: appleboy/ssh-action@v1.0.3
       with:
@@ -39,4 +39,4 @@ jobs:
           sudo docker service create --name fast-ci-todo --replicas=3 -p 80:3000 \
             --mount type=bind,source=/todo-fast,destination=/etc/todos \
             --mount type=bind,source=/home/${{ env.SSH_USER }}/,destination=/etc/env \
-            waltenbergjr/fast-ci-cd:${{ github.event.inputs.imageTag }}
+            Aurineque/fast-ci-cd:${{ github.event.inputs.imageTag }}
